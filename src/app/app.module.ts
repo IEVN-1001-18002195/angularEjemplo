@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent //que pueda ser usado en todos los demas archivos
   ],
   imports: [
     BrowserModule
@@ -14,3 +14,5 @@ import { AppComponent } from './app.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+//archivo generico para todos los archivos de los componentes 
