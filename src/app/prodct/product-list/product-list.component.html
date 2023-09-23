@@ -27,11 +27,11 @@
                 Filtrar por
             </div>
             <div class="col-md-4">
-                <input type="text" name="filter" class="from-control">
+                <input [(ngModel)]="listFilter" type="text" name="filter" class="from-control">
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Filtro</h3>
+                    <h3>Filtro: {{listFilter}}</h3>
                 </div>
             </div>
             <div class="table-responsive">
@@ -39,7 +39,7 @@
                     <thead>
                         <tr>
                             <th>
-                                <button type="button" class="btn btn-primary">Imagen</button>
+                                <button  (click)="showImage()" type="button" class="btn btn-primary">{{muestraImg? 'Ocultar':'Mostrar'}} Imagen</button>
                             </th>
                             <th>Modelo</th>
                             <th>Descripcion</th>
@@ -47,17 +47,24 @@
                             <th>Precio</th>
                             <th>Marca</th>
                             <th>Color</th>
+                            <th>Imagen</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>{{product[0].productoId}}</td>
-                            <td>{{product[0].Modelo}}</td>
-                            <td>{{product[0].Descripcion}}</td>
-                            <td>{{product[0].year}}</td>
-                            <td>{{product[0].Precio}}</td>
-                            <td>{{product[0].Marca}}</td>
-                            <td>{{product[0].Color}}</td>
+                        <tr *ngFor="let product of product | productoFilter:listFilter">
+                            <td>{{product.productoId}}</td>
+                            <td>{{product.Modelo | uppercase}}</td>
+                            <td>{{product.Descripcion}}</td>
+                            <td>{{product.year}}</td>
+                            <td>{{product.Precio | currency}}</td>
+                            <td>{{product.Marca}}</td>
+                            <td>{{product.Color | lowercase}}</td>
+                            <td>
+                                <img *ngIf="muestraImg" [src]="product.imagenUrl" 
+                                [title]="product.Modelo" 
+                                [style.width.px]="imageWidth"
+                                [style.margin.px]="imageMargin">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
