@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule } from '@angular/forms';
-import { MatInputModule} from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 
 
 import { AppComponent } from './app.component';
@@ -13,6 +11,8 @@ import { OperasBasComponent } from './formularios/operas-bas/operas-bas.componen
 import { CalculosComponent } from './formularios/calculos/calculos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SumaComponent } from './formularios/suma/suma.component';
+import { MenuComponent } from './menu/menu/menu.component';
+import { MaterialModule } from './material/material/material.module';
 
 @NgModule({
   declarations: [
@@ -21,13 +21,13 @@ import { SumaComponent } from './formularios/suma/suma.component';
     ProductoFilterPipe,
     OperasBasComponent,
     CalculosComponent,
-    SumaComponent //que pueda ser usado en todos los demas archivos
+    SumaComponent,
+    MenuComponent //que pueda ser usado en todos los demas archivos
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    MatInputModule,
-    MatButtonModule,
+    MaterialModule,
     BrowserAnimationsModule
   ],
   providers: [],
